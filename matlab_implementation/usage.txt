@@ -1,4 +1,6 @@
 Usage of the code
-for radix-2 booth encoding booth_encoder_radix_2(0b01110101,8)
-for radix-4 booth enciding booth_encoder_radix_4(0b01110101,8)
+for radix-2 booth encoding, call 
+  booth_encoder_radix_2(0b01110101,8)
+for radix-4 booth encoding, call
+  booth_encoder_radix_4(0b01110101,8)
 

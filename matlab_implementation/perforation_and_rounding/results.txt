@@ -1,0 +1,3 @@
+MRED for values of A,B from -2^16 to 2^16-1 
+1. k=1,m=2, = 
+	

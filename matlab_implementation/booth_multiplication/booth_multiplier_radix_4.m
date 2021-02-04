@@ -4,7 +4,7 @@ function [answer] = booth_multiplier_radix_4(num_1,num_2)
 	num_1 = int32(num_1);
 	num_2 = int32(num_2);
 	lb_0 = 0;
-	for index=0:2:7
+	for index=0:2:15
 		lb_1 = bitget(num_1,bin_index(index),'int32');
 		lb_2 = bitget(num_1,bin_index(index+1),'int32');
 		if (lb_2==0 && lb_1==0 && lb_0==1) || ( lb_2==0 && lb_1==1 && lb_0==0 ) 

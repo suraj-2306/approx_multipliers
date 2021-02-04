@@ -1,7 +1,11 @@
-function [result] = error_analysis(A,B,m,k)
-	rounding(A,m);
-	perforation(B,k);
-	result = booth_multiplier_radix_2(rounding(A,m),perforation(B,k))
-	result = booth_multiplier_radix_4(rounding(A,m),perforation(B,k))
+function [MRED] = error_analysis(A,B,m,k)
+	RED =0.000;
+	%result = booth_multiplier_radix_2(rounding(A,m),perforation(B,k));
+	for j=-127:127
+		for i = -127:127
+			RED = RED+ abs(i*j - booth_multiplier_radix_2(rounding(i,m),perforation(j,k)))/abs(i*j)
+		end
+	end
+	MRED = double(RED/2^16);
 end
 	

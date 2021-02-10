@@ -1,0 +1,4 @@
+for radix_2
+	booth_multiplier_radix_2(0b10000000,0b00000001)
+for radix_4
+	booth_multiplier_radix_4(0b10000000,0b00000001)

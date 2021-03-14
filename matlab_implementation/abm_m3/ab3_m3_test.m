@@ -1,4 +1,4 @@
-m = 4;
+m = 8;
 i = int64(0);
 j = int64(0);
 RED = int64(0)
@@ -12,4 +12,4 @@ for i=-256:255
 		end
 	end
 end
-MRED =  vpa((RED*10000)/(2^16))
+MRED =  vpa((RED)/(2^32))

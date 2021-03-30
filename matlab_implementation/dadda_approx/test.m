@@ -1,0 +1,5 @@
+function test(first_bin,second_bin)
+ma1 = reduction_1(first_bin,second_bin)
+ma2 = reduction_2(ma1)
+ma3 = reduction_3(ma2)
+ma4 = reduction_4(ma3)

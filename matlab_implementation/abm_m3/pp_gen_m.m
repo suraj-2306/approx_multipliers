@@ -16,20 +16,51 @@ function [sign_array,answer] = pp_gen_m(a,b,m)
 			ppij = ( or( and( xor(lb_1_b,lb_0_b),xor(lb_2_b,lb_1_a) ), and(and(not(xor(lb_1_b,lb_0_b)),xor(lb_2_b,lb_1_b)),xor(lb_2_b,lb_0_a)) ) );
 			pp_matrix(bin_index(i/2),bin_index(j)) = ppij ;
 		end
-		%adding the sign correction terms
-		%for debugging
-		%lb_2_b;
-		if(ppij == 0 && lb_2_b == 1)
+		% for the sign bit from only b
+		if((lb_2_b==1 && lb_1_b==1 &&lb_0_b==1) || (lb_2_b==0 && lb_1_b==0 &&lb_0_b==0))
 			sign_bit = 0;
 		else
 			sign_bit = lb_2_b;
 		end
-		%for debugging
-		%sign_bit;
+
+		%sign_bit
+		%for the sign array formation
 		if sign_bit==1
 			sign_array(bin_index(i/2)) = sign_bit;
 		end
 
+		%pp_matrix
+		%for the sign bit from only a and the sign on the corresponding encoded radix 4 b
+
+		if a(17) ==0
+			if (lb_2_b==1 && lb_1_b==0 &&lb_0_b==0)
+				sign_bit=1;
+			elseif (lb_2_b==1 && lb_1_b==0 &&lb_0_b==1)
+				sign_bit=1;
+			elseif (lb_2_b==1 && lb_1_b==1 &&lb_0_b==0)
+				sign_bit=1;
+			else
+				sign_bit=0;
+			end
+		elseif a(17)==1
+			if (lb_2_b==0 && lb_1_b==0 &&lb_0_b==1)
+				sign_bit=1;
+			elseif (lb_2_b==0&& lb_1_b==1 &&lb_0_b==0)
+				sign_bit=1;
+			elseif (lb_2_b==0&& lb_1_b==1 &&lb_0_b==1)
+				sign_bit=1;
+			else
+				sign_bit=0;
+			end
+		end
+
+		%adding the sign correction terms
+		%for debugging
+		%fprintf('%d %d %d\n',lb_2_b,lb_1_b,lb_0_b);
+		%pp_matrix;
+
+		%sign_bit;
+		%for the sign extension terms
 		if (i==0)
 			pp_matrix(bin_index(i),:) = [pp_matrix(bin_index(i),1:16),[sign_bit,sign_bit,~sign_bit]];
 		else
